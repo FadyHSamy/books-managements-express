@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-import userRoutes from "./routes/authRoutes";
 import { connectToDatabase } from "./config/mongo";
 import { loginUser, registerUser } from "./controllers/AuthController";
-import userRouter from "./routes/authRoutes";
+import authRouter from "./routes/authRoutes";
+import bookRouter from "./routes/bookRoutes";
 
 const cors = require("cors");
 
@@ -19,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectToDatabase();
 
 // Routes
-app.use("", userRouter);
+app.use("", authRouter);
+app.use("", bookRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
