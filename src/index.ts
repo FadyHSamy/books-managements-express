@@ -4,6 +4,7 @@ import { connectToDatabase } from "./config/mongo";
 import { loginUser, registerUser } from "./controllers/AuthController";
 import authRouter from "./routes/authRoutes";
 import bookRouter from "./routes/bookRoutes";
+import languageRouter from "./routes/language";
 
 const cors = require("cors");
 
@@ -21,6 +22,7 @@ connectToDatabase();
 // Routes
 app.use("", authRouter);
 app.use("", bookRouter);
+app.use("", languageRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
